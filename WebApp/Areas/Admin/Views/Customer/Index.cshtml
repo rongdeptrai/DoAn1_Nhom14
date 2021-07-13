@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ModelEF.Model.UserAccount>
+@using PagedList.Mvc
+@using PagedList
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fa fa-user"></i>&nbsp;Quản Lý Khách Hàng
+}
+@using (Html.BeginForm("Index", "Customer", FormMethod.Post))
+{<div class="col-lg-12 form-group">
+    
+        <div class="col-md-6">
+            @Html.ActionLink("Tạo mới", "Create", "Customer", new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewBag.SearchString" name="searchString" class="form-control" placeholder="Nhập tìm kiếm" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Tìm Kiếm" class="btn btn-info" />
+        </div>
+ 
+    </div>
+    }
+    <div class="col-lg-12 form-group">
+        <table class="table">
+            <tr>
+                <th>
+                    Tên Đăng Nhập
+                </th>
+                <th>
+                    Họ Tên
+                </th>
+                <th>
+                    Mật Khẩu
+                </th>
+                <th>
+                    Trạng Thái
+                </th>
+                <th>
+                    Thao Tác
+                </th>
+               
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.CusID">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-active" data-id="@item.CusID">
+                             @(item.Status? "Active":"Blocked")
+                        </a>    
+                    </td>
+                    <td>
+                        <a href="~/Admin/Customer/Update/@item.UserName"><i class="fa fa-refresh"></i></a>
+                        &nbsp;
+                        @Ajax.ActionLink(" ", "Delete", new { @username = item.UserName }, new AjaxOptions
+                   {
+                       Confirm = "Bạn có muốn xóa bản ghi này?",
+                       OnComplete = "$('#row_" + item.UserName + "').remove()",
+                       HttpMethod = "Delete"
+                   }, new { @class = "glyphicon glyphicon-trash" })
+                    </td>
+                    
+                </tr>
+            }
+
+        </table>
+        <i class="btn-danger">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))</i>
+    </div>
+@section jsFooter{
+    <script src="~/Assets/admin/js/active_controller/active.js"></script>
+    }

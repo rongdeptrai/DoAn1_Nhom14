@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ModelEF.Model.Product>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fa fa-user"></i>&nbsp;Quản lý sản phẩm
+}
+@using (Html.BeginForm("Index", "Product", FormMethod.Post))
+{
+    <div class="col-lg-12 form-group">
+        <div class="col-md-6">
+            @Html.ActionLink("Tạo mới", "Create", "Product", new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập từ khóa cần tìm kiếm" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Tìm Kiếm" class="btn btn-default" />
+        </div>
+    </div>
+}
+<div class="col-lg-12 form-group">
+    <table class="table">
+        <tr>
+            <th>
+                Mã SP
+            </th>
+            <th>
+                Tên Sản Phẩm
+            </th>
+            <th>
+                Đơn Giá
+            </th>
+            
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Mã Loại
+            </th>
+            
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Thao Tác
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.ProductID">
+                <td>
+                    @item.ProductID
+                </td>
+                <td>
+                    @item.ProductName
+                </td>
+                <td>
+                    @String.Format("{0:0,0 vnđ}", item.UnitCost)
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.CategoryID
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ProductImg)" alt="" height=60 width=100 />
+                </td>
+                <td>
+                    <a href="@Url.Action("Detail","Product", new {item.ProductID})"><i class="fa fa-info-circle"></i></a>
+                    &nbsp;
+                    <a href="@Url.Action("Update","Product", new {item.ProductID})"><i class="fa fa-refresh"></i></a>
+                    &nbsp;
+                    @Ajax.ActionLink(" ", "Delete", new { @productid = item.ProductID }, new AjaxOptions
+              {
+                  Confirm = "Bạn có muốn xóa bản ghi này?",
+                  OnComplete = "$('#row_" + item.ProductID + "').remove()",
+                  HttpMethod = "Delete"
+              }, new { @class = "glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+</div>

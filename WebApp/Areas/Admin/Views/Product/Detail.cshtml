@@ -1,0 +1,79 @@
+﻿@model ModelEF.Model.Product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    <i class="fa fa-save"></i>&nbsp; Chi tiet san pham
+}
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitCost)
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0 vnđ}", Model.UnitCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImg)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ProductImg)" alt="" height=60 width=100 />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductStatus)
+        </dt>
+
+        <dd>
+            <a href="#" class="btn btn-success btn-active">
+                @(Model.ProductStatus? "Còn hàng":"Hết hàng")
+            </a>
+        </dd>
+
+    </dl>
+</div>
+<div class="col-md-6">
+    @Html.ActionLink("Quay Lại", "Index", "Product", new { @class = "btn btn-primary" })
+</div>
