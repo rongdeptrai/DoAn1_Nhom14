@@ -140,6 +140,15 @@
     <Compile Include="DAO\CustomerDao.cs" />
     <Compile Include="DAO\ProductDao.cs" />
     <Compile Include="DAO\UserDao.cs" />
+    <Compile Include="ModelDb\ChiTietXe.cs" />
+    <Compile Include="ModelDb\ChucVu.cs" />
+    <Compile Include="ModelDb\HoaDon.cs" />
+    <Compile Include="ModelDb\KhachHang.cs" />
+    <Compile Include="ModelDb\LoaiKhachHang.cs" />
+    <Compile Include="ModelDb\LoaiODo.cs" />
+    <Compile Include="ModelDb\MyParkingContext.cs" />
+    <Compile Include="ModelDb\NhanVien.cs" />
+    <Compile Include="ModelDb\ODo.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\LeHoangLongContext.cs" />
