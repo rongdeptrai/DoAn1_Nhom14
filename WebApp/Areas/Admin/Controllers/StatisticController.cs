@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApp.Controllers
+namespace WebApp.Areas.Admin.Controllers
 {
-    public class LoginController : Controller
+    public class StatisticController : BaseController
     {
-        // GET: Login
+        // GET: Admin/Statistic
         public ActionResult Index()
         {
             return View();

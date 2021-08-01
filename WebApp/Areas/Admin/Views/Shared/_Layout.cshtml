@@ -28,6 +28,9 @@
     <link href="~/Assets/admin/js/css3clock/css/style.css" rel="stylesheet">
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="~/Assets/admin/js/morris-chart/morris.css">
+    <link rel="stylesheet" href="~/Assets/admin/css/parking.css">
+    <link rel="stylesheet" href="~/Assets/admin/css/invoice.css">
+    <link rel="stylesheet" href="~/Assets/admin/js/parking.js">
     <!-- Custom styles for this template -->
     <link href="~/Assets/admin/css/style.css" rel="stylesheet">
     <link href="~/Assets/admin/css/style-responsive.css" rel="stylesheet" />
@@ -284,17 +287,23 @@
                                 <i class="fa fa-user"></i>
                                 <span>Quản lý tài khoản </span>
                             </a>
-                          
+
                         </li>
                         <li class="sub-menu">
-                            <a href="@Url.Action("Index","Product")" ">
-                                <i class="fa fa-laptop"></i>
-                                <span>Quản lý sản phẩm</span>
+                            <a href="@Url.Action("Index","Parking")" ">
+                                <i class="fa fa-square"></i>
+                                <span>Quản lý ô đỗ</span>
                             </a>
 
                         </li>
-                   
 
+                        <li class="sub-menu">
+                            <a href="@Url.Action("Index","Invoice")" ">
+                                <i class="fa fa-list"></i>
+                                <span>Quản hóa đơn</span>
+                            </a>
+
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar menu end-->

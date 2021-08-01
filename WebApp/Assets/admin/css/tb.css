@@ -4,10 +4,13 @@
     width: 100%;
 }
 
+
     #tb td, #tb th {
         border: 1px solid #ddd;
         padding-top: 12px;
         padding-bottom: 12px;
+        padding-right: 12px;
+        padding-left: 12px;
         text-align: center;
     }
 
@@ -17,9 +20,8 @@
         background-color: #ddd;
     }
 
-    #tb th {
-        padding-top: 12px;
-        padding-bottom: 12px;
+    #tb th td {
+        padding: 20px;
         text-align: center;
         background-color: #1fb5ad;
         color: white;

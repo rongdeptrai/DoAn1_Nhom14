@@ -23,5 +23,6 @@ namespace WebApp.Areas.Admin.Controllers
             Session[Constants.USER_SESSION] = null;
             return RedirectToAction("Index", "Login");
         }
+
     }
 }

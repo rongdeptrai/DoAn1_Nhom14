@@ -12,7 +12,7 @@ namespace ModelEF.ModelDb
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ODo()
         {
-            HoaDons = new HashSet<HoaDon>();
+            DatChoes = new HashSet<DatCho>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -37,7 +37,7 @@ namespace ModelEF.ModelDb
         public string MaLoaiO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<DatCho> DatChoes { get; set; }
 
         public virtual LoaiODo LoaiODo { get; set; }
     }

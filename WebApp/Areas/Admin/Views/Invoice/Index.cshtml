@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ModelEF.ModelDb.HoaDon>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fa fa-user"></i>&nbsp;Quản Lý Hóa Đơn
+}
+@using (Html.BeginForm("Index", "Invoice", FormMethod.Post))
+{<div class="col-lg-12 form-group">
+
+        <div class="col-md-6">
+            @Html.ActionLink("Tạo mới", "Create", "Invoice", new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewBag.SearchString" name="searchString" class="form-control" placeholder="Nhập tìm kiếm" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Tìm Kiếm" class="btn btn-info" />
+        </div>
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DatCho.MaODo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdHd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayLap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianRa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TienPhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatCho.MaODo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianRa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienPhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                <a href="@Url.Action("Detail","Invoice", new {item.MaHD})"><i class="fa fa-info-circle"></i></a> |
+            </td>
+        </tr>
+    }
+
+</table>
+<i class="btn-danger">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+</i>
+</div>
+@section jsFooter{
+    <script src="~/Assets/admin/js/active_controller/active.js"></script>
+}

@@ -1,0 +1,187 @@
+﻿@model IEnumerable<ModelEF.ModelDb.ODo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var ListODo = (List<ModelEF.ModelDb.ODo>)ViewBag.ListODo;
+    var ListLoaiODo = (List<ModelEF.ModelDb.LoaiODo>)ViewBag.ListLoaiODo;
+    var ListDatCho = (List<ModelEF.ModelDb.DatCho>)ViewBag.ListDatCho;
+    var ListChiTietXe = (List<ModelEF.ModelDb.ChiTietXe>)ViewBag.ListChiTietXe;
+    DateTime a = DateTime.Now;
+
+}
+
+@section header{
+    <i class="fa fa-save"></i>&nbsp;Quản lý ô đỗ
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="col-xs-12">
+</div>
+
+@foreach (var item_loai in ListLoaiODo)
+{
+    <h1>@item_loai.TenloaiO</h1>
+    <div class="col-lg-12 form-group">
+        <div class="row">
+            @foreach (var item_odo in ListODo)
+            {
+                if (item_loai.MaLoaiO == item_odo.MaLoaiO)
+
+                {
+                    if (item_odo.TrangThai == "0")
+                    {
+                        using (Html.BeginForm("Create", "Parking", FormMethod.Get))
+                        {
+                            <div class="col-sm-2 p-2">
+                                <div class="container d-flex justify-content-center">
+                                    <figure class="card card-product-grid card-lg" style="background-color:darkseagreen;">
+                                        <img class="img-wr" src="~/Assets/admin/images/odo.jpg">
+                                        <div class="row">
+                                            <div class="col-md-9 col-xs-9">
+                                                <a href="#" class="tenO" data-abc="true">@item_odo.ViTriODo</a>
+                                                <input type="hidden" value="@item_odo.MaODo" name="maODo" />
+                                            </div>
+                                        </div>
+                                        <div class="bottom-wrap">
+                                            <input type="submit" value="Cho thuê" class="btn btn-primary" />
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    }
+                    foreach (var item_datcho in ListDatCho)
+                    {
+
+                        if (item_datcho.MaODo == item_odo.MaODo)
+                        {
+                            if (item_datcho.TrangThaiVaoBai == true)
+                            {
+                              
+                                <div class="col-sm-2 p-2">
+                                    <div class="container d-flex justify-content-center">
+                                        <figure class="card card-product-grid card-lg" style=" background-color: #F24B4E;">
+                                            <img class="img-wr" src="~/Assets/admin/images/odo.jpg">
+                                            <div class="row">
+                                                <div class="col-md-9 col-xs-9">
+                                                    <a href="#" class="tenO" data-abc="true">@item_odo.ViTriODo</a>
+                                                    <span class="cusName">@item_datcho.TenKH</span><br />
+                                                    @foreach (var item_xe in ListChiTietXe)
+                                                    {
+                                                        <span class="cusName">@item_datcho.BienSoXe</span>
+
+                                                        break;
+                                                    }
+                                                    <input type="hidden" value="@item_datcho.MaDatCho" name="maDatCho" />
+                                                    @{
+                                                        if (item_datcho.KhachHang.MaLKH.Equals("MLKH01"))
+                                                        {
+                                                            int? day = (item_datcho.ThoiGianRaDuKien - a)?.Days;
+                                                            int? hour = (item_datcho.ThoiGianRaDuKien - a)?.Hours;
+                                                            int? minutes = (item_datcho.ThoiGianRaDuKien - a)?.Minutes;
+                                                            int? dayl = (a - item_datcho.ThoiGianRaDuKien)?.Days;
+                                                            int? hourl = (a - item_datcho.ThoiGianRaDuKien)?.Hours;
+                                                            int? minutel = (a - item_datcho.ThoiGianRaDuKien)?.Minutes;
+                                                            if (day > 0 || hour > 0 || minutes > 0)
+                                                            {
+                                                                <span class="Otime">Còn @day ngày @hour giờ @minutes phút</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="Otime">Quá thời gian dự kiến </span>
+                                                                <span class="Otime">@dayl ngày @hourl giờ @minutel phút</span>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            int? day = (item_datcho.HanCuoiHetPhi - a)?.Days;
+                                                            int? hour = (item_datcho.HanCuoiHetPhi - a)?.Hours;
+                                                            int? minutes = (item_datcho.HanCuoiHetPhi - a)?.Minutes;
+                                                            int? dayl = (a - item_datcho.HanCuoiHetPhi)?.Days;
+                                                            int? hourl = (a - item_datcho.HanCuoiHetPhi)?.Hours;
+                                                            int? minutel = (a - item_datcho.HanCuoiHetPhi)?.Minutes;
+                                                            if (day > 0 || hour > 0 || minutes > 0)
+                                                            {
+                                                                <span class="Otime">Còn @day ngày @hour giờ @minutes phút</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="Otime">Quá thời gian dự kiến</span>
+                                                                <span class="Otime">@dayl ngày @hourl giờ @minutel phú</span>
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <div class="bottom-wrap">
+                                                <a href="@Url.Action("Create","Invoice", new {item_datcho.MaDatCho})"><i class="btn btn-primary">Xuát bãi</i></a>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                                
+                            }
+
+                            else if (item_datcho.TrangThaiVaoBai == false)
+                            {
+                                <div class="col-sm-2 p-2">
+                                    <div class="container d-flex justify-content-center">
+                                        <figure class="card card-product-grid card-lg" style=" background-color: hotpink;">
+                                            <img class="img-wr" src="~/Assets/admin/images/odo.jpg">
+                                            <div class="row">
+                                                <div class="col-md-9 col-xs-9">
+                                                    <a href="#" class="tenO" data-abc="true">@item_odo.ViTriODo</a>
+                                                    <span class="cusName">@item_datcho.TenKH</span>
+                                                    <span class="cusName">@item_datcho.BienSoXe</span>
+
+                                                    @{
+                                                        //if (item_datcho.KhachHang.MaLKH.Equals("MLKH01"))
+                                                        //{
+                                                        int? day = (a - item_datcho.NgayDangKy)?.Days;
+                                                        int? hour = (a - item_datcho.NgayDangKy)?.Hours;
+                                                        int? minutes = (a - item_datcho.NgayDangKy)?.Minutes;
+                                                        if (minutes > 15)
+                                                        {
+                                                            <span class="Otime">Hạn giữ chỗ @day ngày @hour giờ @minutes phút</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="Otime">Quá hạn giữ chỗ </span>
+                                                            <span class="Otime"> Trễ @day ngày @hour giờ @minutes phút</span>
+                                                           
+                                                        }
+                                                        
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <div class="bottom-wrap">
+                                                <span class="Otime">Chưa Vào bãi</span>
+                                                <a href="#" class="btn btn-success btn-active" data-id="@item_datcho.IdDatCho">
+                                                    @(item_datcho.TrangThaiVaoBai? "Xuất bãi":"Cho vào bãi")
+                                                </a>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                            }
+                            break;
+
+                        }
+                    }
+
+                }
+            }
+
+        </div>
+    </div>
+}
+@section jsFooter{
+    <script src="~/Assets/admin/js/active_controller/active.js"></script>
+}
+

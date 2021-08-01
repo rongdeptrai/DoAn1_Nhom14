@@ -137,13 +137,15 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InvoiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
     <Compile Include="Areas\Admin\Model\LoginModel.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Controllers\HomeUsController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SiginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,13 +166,16 @@
     <Content Include="Assets\admin\css\bucket-ico-fonts.css" />
     <Content Include="Assets\admin\css\clndr.css" />
     <Content Include="Assets\admin\css\default-theme.css" />
+    <Content Include="Assets\admin\css\demo.css" />
     <Content Include="Assets\admin\css\green-theme.css" />
     <Content Include="Assets\admin\css\invoice-print.css" />
+    <Content Include="Assets\admin\css\invoice.css" />
     <Content Include="Assets\admin\css\jquery.steps.css" />
     <Content Include="Assets\admin\css\orange-theme.css" />
     <Content Include="Assets\admin\css\purple-theme.css" />
     <Content Include="Assets\admin\css\style-responsive.css" />
     <Content Include="Assets\admin\css\style.css" />
+    <Content Include="Assets\admin\css\parking.css" />
     <Content Include="Assets\admin\css\table-responsive.css" />
     <Content Include="Assets\admin\css\tb.css" />
     <Content Include="Assets\admin\css\turquoise-theme.css" />
@@ -212,6 +217,7 @@
     <Content Include="Assets\admin\images\logo.png" />
     <Content Include="Assets\admin\images\Logo_admin.png" />
     <Content Include="Assets\admin\images\nav-expand.png" />
+    <Content Include="Assets\admin\images\odo.jpg" />
     <Content Include="Assets\admin\images\product_img.png" />
     <Content Include="Assets\admin\images\search-icon.png" />
     <Content Include="Assets\admin\images\sm-img-1.jpg" />
@@ -985,6 +991,7 @@
     <Content Include="Assets\admin\js\nestable\index.html" />
     <Content Include="Assets\admin\js\nestable\jquery.nestable.css" />
     <Content Include="Assets\admin\js\nestable\jquery.nestable.js" />
+    <Content Include="Assets\admin\js\parking.js" />
     <Content Include="Assets\admin\js\scripts.js" />
     <Content Include="Assets\admin\js\select-init.js" />
     <Content Include="Assets\admin\js\select2\select2-bootstrap.css" />
@@ -1058,9 +1065,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Customer\Create.cshtml" />
     <Content Include="Assets\admin\bs3\css\bootstrap-theme.css.map" />
     <Content Include="Assets\admin\bs3\css\bootstrap.css.map" />
     <Content Include="Assets\admin\bs3\fonts\glyphicons-halflings-regular.eot" />
@@ -1155,11 +1159,14 @@
     <Content Include="Assets\admin\js\select2\select2_locale_en.js.template" />
     <Content Include="Assets\admin\js\skycons\.gitignore" />
     <Content Include="Assets\admin\js\skycons\README.md" />
-    <Content Include="Areas\Admin\Views\Customer\Update.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Update.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Parking\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Invoice\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Invoice\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1184,14 +1191,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\HomeUs\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Sigin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\Upload\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

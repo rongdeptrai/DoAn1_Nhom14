@@ -1,7 +1,8 @@
-﻿using ModelEF.Model;
+﻿using ModelEF.ModelDb;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,61 +11,81 @@ namespace ModelEF.DAO
 {
     public class CustomerDao
     {
-        private LeHoangLongContext db;
+        private MyParkingContext db;
         public CustomerDao()
         {
-            db = new LeHoangLongContext();
+            db = new MyParkingContext();
 
         }
-        public string Insert(UserAccount entityCus)
+        public int login(string user, string pass)
         {
-            db.UserAccounts.Add(entityCus);
-            db.SaveChanges();
-            return entityCus.UserName;
-        }
-        public UserAccount Find(string username)
-        {
-            return db.UserAccounts.Find(username);
-        }
-        public List<UserAccount> ListAll()
-        {
-            return db.UserAccounts.ToList();
-        }
-        public IEnumerable<UserAccount> ListWhereAll(string keysearch, int page, int pagesize)
-        {
-            IQueryable<UserAccount> model = db.UserAccounts;
-            if (!string.IsNullOrEmpty(keysearch))
+            var rs = db.KhachHangs.SingleOrDefault(x => x.MaKH.Contains(user) && x.MatKhau.Contains(pass));
+            if (rs == null)
             {
-                model = model.Where(x => x.UserName.Contains(keysearch));
-            }
-
-            return model.OrderBy(x => x.UserName).ToPagedList(page, pagesize);
-        }
-        public string Update(UserAccount entityCus)
-        {
-            var cus = Find(entityCus.UserName);
-            if (cus == null)
-            {
-                db.UserAccounts.Add(entityCus);
+                return 0;
             }
             else
             {
-                cus.UserName = entityCus.UserName;
-                if (!string.IsNullOrEmpty(entityCus.Password))
+                return 1;
+            }
+        }
+        public string Insert(KhachHang entityCus)
+        {
+            db.KhachHangs.Add(entityCus);
+            db.SaveChanges();
+            return entityCus.TenKH;
+        }
+        public int Search( string email, string sdt)
+        {
+            var d = db.KhachHangs.Where(x => x.Email.Contains(email) || x.SoDienThoai.Contains(sdt)).ToList();
+            var c = d.Count();
+            return c;
+        }
+        public KhachHang Find(string username)
+            
+        {
+            var d= db.KhachHangs.Find(username);
+            return d;
+        }
+        public List<KhachHang> ListAll()
+        {
+            return db.KhachHangs.ToList();
+        }
+        public IEnumerable<KhachHang> ListWhereAll(string keysearch, int page, int pagesize)
+        {
+            IQueryable<KhachHang> model = db.KhachHangs;
+            if (!string.IsNullOrEmpty(keysearch))
+            {
+                model = model.Where(x => x.TenKH.Contains(keysearch));
+            }
+
+            return model.OrderBy(x => x.TenKH).ToPagedList(page, pagesize);
+        }
+        public string Update(KhachHang entityCus)
+        {
+            var cus = Find(entityCus.MaKH);
+            if (cus == null)
+            {
+                db.KhachHangs.Add(entityCus);
+            }
+            else
+            {
+                cus.MaKH = entityCus.MaKH;
+                if (!string.IsNullOrEmpty(entityCus.MatKhau))
                 {
-                    cus.Password = entityCus.Password;
+                    cus.MatKhau = entityCus.MatKhau;
                 }
-                cus.Status = entityCus.Status;
+              
             }
             db.SaveChanges();
-            return entityCus.UserName;
+            return entityCus.MaKH;
         }
         public bool Delete(string username)
         {
             try
             {
-                var cus = db.UserAccounts.Find(username);
-                db.UserAccounts.Remove(cus);
+                var cus = db.KhachHangs.Find(username);
+                db.KhachHangs.Remove(cus);
                 db.SaveChanges();
                 return true;
             }
@@ -73,14 +94,6 @@ namespace ModelEF.DAO
                 return false;
             }
         }
-       
-        public bool ChangeStatus(int id)
-        {
-            var cus = db.UserAccounts.Single(u => u.CusID == id);
-            var a = cus.Status;
-            cus.Status = !cus.Status;
-            db.SaveChanges();
-            return cus.Status;
-        }
+
     }
 }

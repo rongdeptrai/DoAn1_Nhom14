@@ -13,7 +13,7 @@ namespace ModelEF.ModelDb
         public KhachHang()
         {
             ChiTietXes = new HashSet<ChiTietXe>();
-            HoaDons = new HashSet<HoaDon>();
+            DatChoes = new HashSet<DatCho>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -39,7 +39,8 @@ namespace ModelEF.ModelDb
         [StringLength(4)]
         public string GioiTinh { get; set; }
 
-        [StringLength(15)]
+        [Required]
+        [StringLength(75)]
         public string MatKhau { get; set; }
 
         [Required]
@@ -50,7 +51,7 @@ namespace ModelEF.ModelDb
         public virtual ICollection<ChiTietXe> ChiTietXes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<DatCho> DatChoes { get; set; }
 
         public virtual LoaiKhachHang LoaiKhachHang { get; set; }
     }
