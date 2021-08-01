@@ -49,7 +49,6 @@ C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Buffers.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Memory.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CopyComplete
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.dll
@@ -72,3 +71,62 @@ C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Deployment.xm
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\WebMatrix.Data.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\WebMatrix.WebData.xml
+C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csprojAssemblyReference.cache
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\ModelEF.dll.config
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\ModelEF.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\ModelEF.pdb
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\BouncyCastle.Crypto.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\EntityFramework.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\EntityFramework.SqlServer.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Google.Protobuf.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Compression.LZ4.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Compression.LZ4.Streams.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Hash.xxHash.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Data.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Data.EntityFramework.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Web.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\PagedList.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\PagedList.Mvc.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Buffers.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Data.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Memory.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Numerics.Vectors.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.Helpers.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.Razor.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Razor.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Ubiety.Dns.Core.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\WebMatrix.Data.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\WebMatrix.WebData.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Zstandard.Net.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\EntityFramework.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\EntityFramework.SqlServer.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Google.Protobuf.pdb
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\Google.Protobuf.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Compression.LZ4.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Compression.LZ4.Streams.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\K4os.Hash.xxHash.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Data.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Data.EntityFramework.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\MySql.Web.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\PagedList.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\PagedList.Mvc.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Buffers.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Memory.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Numerics.Vectors.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.Helpers.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.Razor.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Razor.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\WebMatrix.Data.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\bin\Debug\WebMatrix.WebData.xml
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CoreCompileInputs.cache
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CopyComplete
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\obj\Debug\ModelEF.dll
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\obj\Debug\ModelEF.pdb
+E:\1.School\Đồ Án\Đồ Án 1\Code Quản Lý Bãi Đỗ Xe\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.AssemblyReference.cache

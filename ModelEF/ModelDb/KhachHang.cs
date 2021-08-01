@@ -1,4 +1,4 @@
-namespace ModelEF.ModelDb
+﻿namespace ModelEF.ModelDb
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace ModelEF.ModelDb
         public KhachHang()
         {
             ChiTietXes = new HashSet<ChiTietXe>();
-            HoaDons = new HashSet<HoaDon>();
+            DatChoes = new HashSet<DatCho>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,6 +23,7 @@ namespace ModelEF.ModelDb
         [StringLength(6)]
         public string MaKH { get; set; }
 
+        [Required(ErrorMessage = "Tên khách hàng Không được để trống")]
         [StringLength(50)]
         public string TenKH { get; set; }
 
@@ -32,8 +33,9 @@ namespace ModelEF.ModelDb
         [StringLength(30)]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [RegularExpression(@"(84|0[3|5|7|8|9])+([0-9]{8})\b",ErrorMessage ="Sai định dạng Số điện thoại Việt Nam")]
+        [Required(ErrorMessage = "Số Điện Thoại Không được để trống")]
+        [StringLength(10, ErrorMessage = "Số điện thoại 10 số ")]
         public string SoDienThoai { get; set; }
 
         [StringLength(4)]
@@ -46,11 +48,13 @@ namespace ModelEF.ModelDb
         [StringLength(6)]
         public string MaLKH { get; set; }
 
+        public string HinhAnh { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietXe> ChiTietXes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<DatCho> DatChoes { get; set; }
 
         public virtual LoaiKhachHang LoaiKhachHang { get; set; }
     }

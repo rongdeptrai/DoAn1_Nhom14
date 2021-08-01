@@ -136,25 +136,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\CategoryDao.cs" />
-    <Compile Include="DAO\CustomerDao.cs" />
-    <Compile Include="DAO\ProductDao.cs" />
-    <Compile Include="DAO\UserDao.cs" />
+    <Compile Include="DAO\EmployeeDao.cs" />
+    <Compile Include="DAO\KhachHangDao.cs" />
     <Compile Include="ModelDb\ChiTietXe.cs" />
     <Compile Include="ModelDb\ChucVu.cs" />
+    <Compile Include="ModelDb\DatCho.cs" />
     <Compile Include="ModelDb\HoaDon.cs" />
     <Compile Include="ModelDb\KhachHang.cs" />
     <Compile Include="ModelDb\LoaiKhachHang.cs" />
     <Compile Include="ModelDb\LoaiODo.cs" />
-    <Compile Include="ModelDb\MyParkingContext.cs" />
+    <Compile Include="ModelDb\Model2.cs" />
     <Compile Include="ModelDb\NhanVien.cs" />
     <Compile Include="ModelDb\ODo.cs" />
-    <Compile Include="Model\Admin.cs" />
-    <Compile Include="Model\Category.cs" />
-    <Compile Include="Model\LeHoangLongContext.cs" />
-    <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\sysdiagram.cs" />
-    <Compile Include="Model\UserAccount.cs" />
+    <Compile Include="ModelDb\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +158,7 @@
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Demo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -18,6 +18,16 @@ namespace WebApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "HomeUs", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+              name: "AuthSingin",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Auth", action = "Singin", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+             name: "AuthLogout",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Auth", action = "Logout", id = UrlParameter.Optional }
+         );
         }
     }
 }

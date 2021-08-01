@@ -12,6 +12,7 @@ namespace ModelEF.ModelDb
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhanVien()
         {
+            DatChoes = new HashSet<DatCho>();
             HoaDons = new HashSet<HoaDon>();
         }
 
@@ -44,7 +45,7 @@ namespace ModelEF.ModelDb
         public string GioiTinh { get; set; }
 
         [Required]
-        [StringLength(15)]
+        [StringLength(75)]
         public string MatKhau { get; set; }
 
         [Required]
@@ -52,6 +53,9 @@ namespace ModelEF.ModelDb
         public string MaCV { get; set; }
 
         public virtual ChucVu ChucVu { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DatCho> DatChoes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

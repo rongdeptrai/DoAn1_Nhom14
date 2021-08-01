@@ -1,1 +1,279 @@
-﻿<h1>Hello</h1>
+﻿@model ModelEF.ModelDb.DatCho
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ListODo = (List<ModelEF.ModelDb.ODo>)ViewBag.ListODo;
+    var ListLoaiODo = (List<ModelEF.ModelDb.LoaiODo>)ViewBag.ListLoaiODo;
+    var ListDatCho = (List<ModelEF.ModelDb.DatCho>)ViewBag.ListDatCho;
+    var ListChiTietXe = (List<ModelEF.ModelDb.ChiTietXe>)ViewBag.ListChiTietXe;
+    var ListKhachHang = (List<ModelEF.ModelDb.KhachHang>)ViewBag.ListKhachHang;
+    DateTime aDate = DateTime.Now;
+
+
+}
+
+
+@section About{
+    <div class="section section-hero section-shaped">
+        <div class="shape shape-style-3 shape-default">
+            <span class="span-150"></span>
+            <span class="span-50"></span>
+            <span class="span-50"></span>
+            <span class="span-75"></span>
+            <span class="span-100"></span>
+            <span class="span-75"></span>
+            <span class="span-50"></span>
+            <span class="span-100"></span>
+            <span class="span-50"></span>
+            <span class="span-100"></span>
+        </div>
+        <div class="page-header">
+            <div class="container shape-container d-flex align-items-center py-lg">
+
+                <div class="col px-0">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-6 text-center">
+
+                            <h2 class="display-4 font-weight-normal text-white"> Chào Mừng Bạn Đến Với</h2>
+                            <h1 class="text-white display-1">My Parking</h1>
+                            <div class="btn-wrapper mt-4">
+                                <a href="#datcho" class="btn btn-warning btn-icon mt-3 mb-sm-0">
+                                    <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
+                                    <span class="btn-inner--text">Đặt Ngay !</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator separator-bottom separator-skew zindex-100">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+    </div>
+
+}
+
+@{
+    int i = 0;
+}
+
+<div class="container mt-4">
+    <div class="flex items-center" id="datcho">
+        <div class="w-12 h-8 bg-danger rounded"></div><span class="ml-2 mr-4">Đang sử dụng</span>
+        <div class="w-12 h-8 bg-pink-400 rounded"></div><span class="ml-2 mr-4">Đã đặt</span>
+        <div class="w-12 h-8 bg-success rounded"></div><span class="ml-2 mr-4">Đang trống</span>
+    </div>
+
+    @foreach (var item_loai in ListLoaiODo)
+    {
+        <h2 class="my-3 p-3 text-lg-center font-weight-bold text-uppercase bg-info text-white">@item_loai.TenloaiO</h2>
+        <div class="row">
+
+            @foreach (var item_odo in ListODo)
+            {
+                if (item_loai.MaLoaiO == item_odo.MaLoaiO)
+                {
+                    <div class="col-sm-2 p-2 " style="box-sizing:border-box">
+                        <div class="best_shoes w-full border-2 " style="min-height:140px">
+                            <h5 class="px-2 text-center text-black  font-weight-bold pb-0 pt-2">@item_odo.ViTriODo</h5>
+                            @if (item_odo.TrangThai.Equals("1"))
+                            {
+                                foreach (var item_datcho in ListDatCho)
+                                {
+                                    if (item_datcho.MaODo == item_odo.MaODo)
+                                    {
+                                        if (item_datcho.TrangThaiVaoBai == true || item_datcho.Equals("true"))
+                                        {
+                                            <div class="text-center text-white bg-danger w-full h-36 px-2 pt-2">
+                                                <p class="text-white font-weight-bold truncate mb-2"> @item_datcho.TenKH</p>
+                                                @foreach (var item_xe in ListChiTietXe)
+                                                {
+
+                                                    @*<p class="text-white m-0 text-xs font-bold">Xe @item_xe.HangXe</p>*@
+                                                    <p class="text-white m-0 p-0 text-xs font-bold"> @item_datcho.BienSoXe</p>
+                                                    break;
+
+                                                }
+                                                @{
+                                                    int? day = (item_datcho.ThoiGianRaDuKien - aDate)?.Days;
+                                                    int? hour = (item_datcho.ThoiGianRaDuKien - aDate)?.Hours;
+                                                    int? minutes = (item_datcho.ThoiGianRaDuKien - aDate)?.Minutes;
+
+                                                    int? dayThang = (item_datcho.HanCuoiHetPhi - aDate)?.Days;
+                                                    int? hourThang = (item_datcho.HanCuoiHetPhi - aDate)?.Hours;
+                                                    int? minutesThang = (item_datcho.HanCuoiHetPhi - aDate)?.Minutes;
+                                                    if (day != null || hour != null || minutes != null)
+                                                    {
+                                                        <small class="text-xs text-white">Còn @day ngày @hour giờ @minutes phút</small>
+                                                    }
+                                                    else
+                                                    {
+                                                        <small class="text-xs text-white">Còn @dayThang ngày @hourThang giờ @minutesThang phút</small>
+                                                    }
+                                                }
+                                            </div>
+
+                                        }
+
+                                        else
+                                        {
+                                            <div class="text-center text-white bg-pink-500 w-full h-36 px-2 pt-2">
+                                                <p class="text-white font-weight-bold truncate mb-2"> @item_datcho.TenKH</p>
+                                                @foreach (var item_xe in ListChiTietXe)
+                                                {
+                                                    <p class="text-white m-0 p-0 text-xs font-bold"> @item_datcho.BienSoXe</p>
+                                                    break;
+                                                }
+                                                @{
+                                                    int? day = (item_datcho.ThoiGianRaDuKien - aDate)?.Days;
+                                                    int? hour = (item_datcho.ThoiGianRaDuKien - aDate)?.Hours;
+                                                    int? minutes = (item_datcho.ThoiGianRaDuKien - aDate)?.Minutes;
+
+                                                    int? dayThang = (item_datcho.HanCuoiHetPhi - aDate)?.Days;
+                                                    int? hourThang = (item_datcho.HanCuoiHetPhi - aDate)?.Hours;
+                                                    int? minutesThang = (item_datcho.HanCuoiHetPhi - aDate)?.Minutes;
+                                                    if (day != null || hour != null || minutes != null)
+                                                    {
+                                                        <small class="text-xs text-white">Còn @day ngày @hour giờ @minutes phút</small> }
+                                                    else
+                                                    {
+                                                        if (dayThang != null || hourThang != null || minutesThang != null)
+                                                        {
+                                                            <small class="text-xs text-white">Còn @dayThang ngày @hourThang giờ @minutesThang phút</small>
+                                                        }
+                                                        else
+                                                        {
+                                                            <small class="text-xs text-white">Chưa xác định</small>
+                                                        }
+                                                    }
+
+
+                                                }
+                                            </div>
+                                        }
+                                        break;
+
+                                    }
+
+                                }
+
+
+                            }
+                            else
+                            {
+                                <div class="text-center text-white bg-danger w-full h-36">
+                                    <div class="bg-green-500 w-full h-full flex items-center justify-center cursor-pointer">
+                                        <div class="col">
+                                            <a href="#addBookDialog" class="btn btn-block btn-success open-AddBookDialog" data-toggle="modal" data-target="#modal-form" data-id="@item_odo.MaODo" data-vitriodo="@item_odo.ViTriODo">Đặt Ngay</a>
+                                            <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                                <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document" id="addBookDialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body p-0">
+                                                            <div class="card bg-secondary border-0 mb-0">
+                                                                <div class="card-body px-lg-5 py-lg-5">
+                                                                    <div class="text-center text-muted mb-4">
+                                                                        <h4 class="font-bold">Xác nhận đặt chỗ</h4>
+                                                                    </div>
+                                                                    @using (Html.BeginForm("Create", "DatChos", FormMethod.Post))
+                                                                    {
+                                                                        @Html.AntiForgeryToken()
+                                                                        <div class="form-group mb-3">
+                                                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                                            <input type="text" id="bookId" name="MaODo" class="form-control mb-2 hidden" />
+                                                                            <input type="text" id="bookIdViTri" class="form-control mb-2" disabled />
+                                                                            @foreach (var user in ListKhachHang)
+                                                                            {
+
+                                                                                if (user.MaKH.Equals(@Session["UserAdminId"]))
+                                                                                {
+                                                                                    <input class="form-control mb-2 hidden" type="text" name="MaKH" value="@user.MaKH">
+                                                                                    <input class="form-control mb-2" type="text" name="TenKH" value="@user.TenKH">
+                                                                                    <input class="form-control mb-2" type="text" name="SoDienThoai" value="@user.SoDienThoai">
+                                                                                    foreach (var xe in ListChiTietXe)
+                                                                                    {
+                                                                                        if (xe.MaKH.Equals(user.MaKH))
+                                                                                        {
+                                                                                            <input class="form-control mb-2" type="text" name="BienSoXe" value="@xe.BienSoXe">
+                                                                                            break;
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+
+                                                                            @{
+                                                                                var userGuest = Session["UserAdminId"];
+                                                                                if (userGuest == null)
+                                                                                {
+                                                                                    <input class="form-control mb-2 hidden" type="text" name="MaKH" required value="MKHVL">
+                                                                                    <input class="form-control mb-2" type="text" name="TenKH" required placeholder="Nhập Tên Khách Hàng">
+                                                                                    <input class="form-control mb-2" type="text" name="SoDienThoai" required="" placeholder="Nhập Số Điện Thoại" maxlength="10"
+                                                                                           pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b">
+                                                                                    <input class="form-control mb-2" type="text" name="BienSoXe" placeholder="Nhập Biển Số Xe">
+
+
+                                                                                }
+                                                                            }
+                                                                            <small class="text-black">Chọn thời gian ra bãi (Tính theo giờ)</small>
+                                                                            <div class="input-group input-group-merge input-group-alternative mb-2">
+                                                                                <input class="form-control" type="datetime-local" name="ThoiGianRaDuKien">
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                        <div class="text-center">
+                                                                            <button type="submit" class="btn btn-primary my-4">Xác Nhận</button>
+                                                                        </div>
+                                                                    }
+                                                                    <div class="text-black text-left">
+                                                                        <ul>
+                                                                            <li class="text-xs text-gray-500 font-medium">- Nếu khàng hàng đặt trên 30 ngày sẽ được tính tiền theo giá tháng !</li>
+                                                                            <li class="text-xs text-gray-500 font-medium">- Thời gian đặt xe là 30p. Yêu cầu khách hàng đến bãi để xác nhận !</li>
+                                                                            <li class="text-xs text-gray-500 font-medium">- Đậu xe quá thời hạn sẽ áp dụng tiền phạt theo quy định !</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                {
+                    i++;
+                }
+
+            }
+        </div>
+    }
+</div>
+
+
+
+
+
+
+@*<div class="flex mt-4">
+        <div class="flex items-center mr-10">
+            <div class="w-10 h-8 bg-green-500 rounded-xl inline-block mr-2"></div>
+            <span class="text-medium">Chỗ trống</span>
+        </div>
+        <div class="flex items-center mr-10">
+            <div class="w-10 h-8 bg-red-500 rounded-xl inline-block"></div>
+            <span>Chỗ đã đặt</span>
+        </div>
+        <div class="flex items-center mr-10">
+            <div class="w-10 h-8 bg-pink-500 rounded-xl inline-block"></div>
+            <span>Chỗ đã đăng kí</span>
+        </div>
+    </div>*@

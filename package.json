@@ -1,0 +1,26 @@
+{
+  "name": "MyPaking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rongdeptrai/DoAn1_Nhom14.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rongdeptrai/DoAn1_Nhom14/issues"
+  },
+  "homepage": "https://github.com/rongdeptrai/DoAn1_Nhom14#readme",
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.7",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
+  }
+}
