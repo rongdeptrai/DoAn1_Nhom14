@@ -22,20 +22,30 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new UserDao();
+
+                var dao = new EmployeeDao();
                 int result = dao.login(user.UserName, Encryptor.EncryptMD5(user.PassWord));
                 if (result == 1)
                 {
-                    //ModelState.AddModelError("","Đăng Nhập Thành Công");
-                    Session.Add(Constants.USER_SESSION, user);
-                    return RedirectToAction("Index", "Home");
+                    int check = dao.checkTypeEmp(user.UserName);
+                    if (check == 1)
+                    {
+                        Session.Add(Constants.USER_SESSION, user);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Bạn không có quyền quản trị");
+                    }
                 }
                 else
                 {
                     ModelState.AddModelError("", "Đăng Nhập Không Thành Công");
                 }
-            }
+
+            }  
             return View("Index");
+
         }
 
     }

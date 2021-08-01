@@ -14,15 +14,22 @@ namespace ModelEF.ModelDb
 
         public virtual DbSet<ChiTietXe> ChiTietXes { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
+        public virtual DbSet<DatCho> DatChoes { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiKhachHang> LoaiKhachHangs { get; set; }
         public virtual DbSet<LoaiODo> LoaiODoes { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<ODo> ODoes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ChiTietXe>()
+                .Property(e => e.MaCTX)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<ChiTietXe>()
                 .Property(e => e.BienSoXe)
                 .IsFixedLength()
@@ -43,13 +50,56 @@ namespace ModelEF.ModelDb
                 .WithRequired(e => e.ChucVu)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.MaDatCho)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.MaODo)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.MaKH)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.SoDienThoai)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.BienSoXe)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.MaNV)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.ThanhTienDuKien)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<DatCho>()
+                .Property(e => e.Discount)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<DatCho>()
+                .HasMany(e => e.HoaDons)
+                .WithRequired(e => e.DatCho)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<HoaDon>()
                 .Property(e => e.MaHD)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<HoaDon>()
-                .Property(e => e.MaKH)
+                .Property(e => e.MaDatCho)
                 .IsFixedLength()
                 .IsUnicode(false);
 
@@ -59,24 +109,11 @@ namespace ModelEF.ModelDb
                 .IsUnicode(false);
 
             modelBuilder.Entity<HoaDon>()
-                .Property(e => e.MaODo)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HoaDon>()
                 .Property(e => e.TienPhat)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<HoaDon>()
-                .Property(e => e.ThanhTienDuKien)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<HoaDon>()
                 .Property(e => e.TongTien)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<HoaDon>()
-                .Property(e => e.Discount)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<KhachHang>()
@@ -112,7 +149,7 @@ namespace ModelEF.ModelDb
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.HoaDons)
+                .HasMany(e => e.DatChoes)
                 .WithRequired(e => e.KhachHang)
                 .WillCascadeOnDelete(false);
 
@@ -167,11 +204,6 @@ namespace ModelEF.ModelDb
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NhanVien>()
-                .HasMany(e => e.HoaDons)
-                .WithRequired(e => e.NhanVien)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<ODo>()
                 .Property(e => e.MaODo)
                 .IsFixedLength()
@@ -188,7 +220,7 @@ namespace ModelEF.ModelDb
                 .IsUnicode(false);
 
             modelBuilder.Entity<ODo>()
-                .HasMany(e => e.HoaDons)
+                .HasMany(e => e.DatChoes)
                 .WithRequired(e => e.ODo)
                 .WillCascadeOnDelete(false);
         }

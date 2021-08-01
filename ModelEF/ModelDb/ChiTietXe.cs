@@ -10,6 +10,10 @@ namespace ModelEF.ModelDb
     public partial class ChiTietXe
     {
         [Key]
+        [StringLength(6)]
+        public string MaCTX { get; set; }
+
+        [Required]
         [StringLength(15)]
         public string BienSoXe { get; set; }
 

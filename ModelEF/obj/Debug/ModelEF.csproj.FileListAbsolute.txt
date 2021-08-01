@@ -49,7 +49,6 @@ C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Buffers.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Memory.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csproj.CopyComplete
 C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.dll
@@ -72,3 +71,4 @@ C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Deployment.xm
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\WebMatrix.Data.xml
 C:\Users\PC\Desktop\MyPaking\ModelEF\bin\Debug\WebMatrix.WebData.xml
+C:\Users\PC\Desktop\MyPaking\ModelEF\obj\Debug\ModelEF.csprojAssemblyReference.cache

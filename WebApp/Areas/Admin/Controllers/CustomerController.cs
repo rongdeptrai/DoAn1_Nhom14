@@ -1,5 +1,5 @@
 ﻿using ModelEF.DAO;
-using ModelEF.Model;
+using ModelEF.ModelDb;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -31,32 +31,41 @@ namespace WebApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            SetViewBag();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(UserAccount model)
+        public ActionResult Create(KhachHang model)
         {
             if (ModelState.IsValid)
             {
                 var dao = new CustomerDao();
-                if (dao.Find(model.UserName) != null)
+                if (dao.Search(model.Email,model.SoDienThoai) >0)
                 {
-                    SetAlert("Tên người dùng đã tồn tại. Mời nhập tên khác.", "warning");
+                    SetAlert("Email hoặc Số điện thoại đã tồn tại. Mời nhập lại.", "warning");
                     return RedirectToAction("Create", "Customer");
-                }
-                var pass = Encryptor.EncryptMD5(model.Password);
-                model.Password = pass;
-                string result = dao.Insert(model);
-                if (!string.IsNullOrEmpty(result))
-                {
-                    SetAlert("Tạo mới khách hàng thành công.", "success");
-                    return RedirectToAction("Index", "Customer");
                 }
                 else
                 {
-                    SetAlert("Tạo mới khách hàng không thành công.", "error");
+                    var pass = Encryptor.EncryptMD5(model.MatKhau);
+                    model.MaKH = "1";
+                    model.MatKhau = pass;
+                    string result = dao.Insert(model);
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        SetAlert("Tạo mới khách hàng thành công.", "success");
+                        return RedirectToAction("Index", "Customer");
+                    }
+                    else
+                    {
+                        SetAlert("Tạo mới khách hàng không thành công.", "error");
+                    }
                 }
+            }
+            else
+            {
+                SetViewBag();
             }
 
             return View();
@@ -71,16 +80,15 @@ namespace WebApp.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Update(UserAccount model)
+        public ActionResult Update(KhachHang model)
         {
 
             if (ModelState.IsValid)
             {
                 var dao = new CustomerDao();
-                var pass = Encryptor.EncryptMD5(model.Password);
-                model.Password = pass;
+                var pass = Encryptor.EncryptMD5(model.MatKhau);
+                model.MatKhau = pass;
                 string result = "";
-                var s = model.Status;
                 result = dao.Update(model);
                 if (!string.IsNullOrEmpty(result))
                 {
@@ -95,19 +103,18 @@ namespace WebApp.Areas.Admin.Controllers
             return View();
         }
         [HttpDelete]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Delete(string username)
         {
             var dao = new CustomerDao().Delete(username);
             return RedirectToAction("Index");
 
         }
-        [HttpPost]
-         public JsonResult ChangeStatus(int id )
+        public void SetViewBag(string selectedid = null)
         {
-            var rs = new CustomerDao().ChangeStatus(id);
-            
-            return Json(new { status = rs });
+            var dao = new CustomerTypeDao();
+            ViewBag.MaLKH = new SelectList(dao.ListAll(), "MaLKH", "TenLKH", selectedid);
         }
+
     }
 }

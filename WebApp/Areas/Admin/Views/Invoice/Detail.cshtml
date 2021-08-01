@@ -1,0 +1,181 @@
+﻿@model ModelEF.ModelDb.HoaDon
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    DateTime a = DateTime.Now;
+}
+
+@section header{
+    <i class="fa fa-user"></i>&nbsp;Chi Tiết Hóa Đơn
+}
+<table class="body-wrap">
+    <tbody>
+        <tr>
+            <td></td>
+            <td class="container" width="600">
+                <div class="content">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="content-wrap aligncenter">
+                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <h2>Thông tin đặt chỗ</h2>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <table class="invoice">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Mã hóa đơn:                  @Model.MaHD
+                                                                    <br> Mã khách hàng:          @Model.DatCho.MaKH
+                                                                    <br>Tên khách hàng:           @Model.TenKH
+                                                                    <br>   Mã đặt chõ:           @Model.MaDatCho
+                                                                    <br>   Mã ô đỗ:           @Model.DatCho.MaODo
+                                                                    <br>   Vị trí ô đỗ:           @Model.DatCho.ODo.ViTriODo
+                                                                    <br>Số điện thoại:           @Model.DatCho.SoDienThoai
+                                                                    <br>Biển số xe:          @Model.DatCho.BienSoXe
+
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+
+                                                                            @{
+                                                                                if (Model.DatCho.KhachHang.MaLKH.Equals("MLKH01"))
+                                                                                {
+                                                                                    <tr>
+                                                                                        <td>Thời gian vào</td>
+                                                                                        <td class="alignright">@Model.DatCho.ThoiGianVao</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Thời gian ra dự kiến</td>
+                                                                                        <td class="alignright">@Model.DatCho.ThoiGianRaDuKien</td>
+                                                                                    </tr>
+                                                                                    int? day = (Model.DatCho.ThoiGianRaDuKien - a)?.Days;
+                                                                                    int? hour = (Model.DatCho.ThoiGianRaDuKien - a)?.Hours;
+                                                                                    int? minutes = (Model.DatCho.ThoiGianRaDuKien - a)?.Minutes;
+                                                                                    int? dayl = (a - Model.DatCho.ThoiGianRaDuKien)?.Days;
+                                                                                    int? hourl = (a - Model.DatCho.ThoiGianRaDuKien)?.Hours;
+                                                                                    int? minutel = (a - Model.DatCho.ThoiGianRaDuKien)?.Minutes;
+                                                                                    if (day > 0 || hour > 0 || minutes > 0)
+
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>Thời gian còn</td>
+                                                                                            <td class="alignright"> @day ngày @hour giờ @minutes phút</td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>Quá hạng dự kiến</td>
+                                                                                            <td class="alignright">@dayl ngày @hourl giờ @minutel phútt</td>
+                                                                                        </tr>
+
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <tr>
+                                                                                        <td>Ngày áp dụng phí</td>
+                                                                                        <td class="alignright">@Model.DatCho.NgayBatDauApDung</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Thời gian ra dự kiến</td>
+                                                                                        <td class="alignright">@Model.DatCho.HanCuoiHetPhi</td>
+                                                                                    </tr>
+                                                                                    int? day = (Model.DatCho.HanCuoiHetPhi - a)?.Days;
+                                                                                    int? hour = (Model.DatCho.HanCuoiHetPhi - a)?.Hours;
+                                                                                    int? minutes = (Model.DatCho.HanCuoiHetPhi - a)?.Minutes;
+                                                                                    int? dayl = (a - Model.DatCho.HanCuoiHetPhi)?.Days;
+                                                                                    int? hourl = (a - Model.DatCho.HanCuoiHetPhi)?.Hours;
+                                                                                    int? minutel = (a - Model.DatCho.HanCuoiHetPhi)?.Minutes;
+                                                                                    if (day > 0 || hour > 0 || minutes > 0)
+
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>Thời gian còn</td>
+                                                                                            <td class="alignright"> @day ngày @hour giờ @minutes phút</td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>Quá hạng dự kiến</td>
+                                                                                            <td class="alignright">@dayl ngày @hourl giờ @minutel phútt</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>Discount</td>
+                                                                                            <td class="alignright"> @String.Format("{0:0,0 vnđ}", @Model.DatCho.Discount)</td>
+                                                                                        </tr>
+
+                                                                                    }
+                                                                                }
+
+                                                                            }
+                                                                            <tr>
+                                                                                <td>Thời gian xuất bãi</td>
+                                                                                <td class="alignright">@Model.ThoiGianRa</td>
+                                                                            </tr>
+                                                                            <tr class="total">
+                                                                                <td class="alignright" width="80%">Tiền phạt</td>
+                                                                                <td class="alignright"> @String.Format("{0:0,0 vnđ}", @Model.TienPhat)</td>
+                                                                            </tr>
+                                                                            <tr class="total">
+                                                                                <td class="alignright" width="80%">Thành tiền dự kiến</td>
+                                                                                <td class="alignright"> @String.Format("{0:0,0 vnđ}", @Model.DatCho.ThanhTienDuKien)</td>
+                                                                            </tr>
+                                                                            <tr class="total">
+                                                                                <td class="alignright" width="80%">Thành tiền dự kiến</td>
+                                                                                <td class="alignright"> @String.Format("{0:0,0 vnđ}", @Model.TongTien)</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <a href="#">View in browser</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    Company Inc. 123 Van Ness, San Francisco 94102
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <td class="aligncenter content-block">Questions? Email <a href="mailto:">support@company.inc</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+   
+</table>
+

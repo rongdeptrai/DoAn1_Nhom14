@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ModelEF.Model.UserAccount>
+﻿@model IEnumerable<ModelEF.ModelDb.KhachHang>
 @using PagedList.Mvc
 @using PagedList
 
@@ -12,7 +12,7 @@
 }
 @using (Html.BeginForm("Index", "Customer", FormMethod.Post))
 {<div class="col-lg-12 form-group">
-    
+
         <div class="col-md-6">
             @Html.ActionLink("Tạo mới", "Create", "Customer", new { @class = "btn btn-danger" })
         </div>
@@ -22,65 +22,84 @@
         <div class="col-md-2">
             <input type="submit" value="Tìm Kiếm" class="btn btn-info" />
         </div>
- 
+
     </div>
-    }
-    <div class="col-lg-12 form-group">
-        <table class="table">
+}
+<div class="col-lg-12 form-group">
+    <table id="tb">
+        <tr>
+            <th>
+                Mã khách hàng
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Loại khách hàng
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    Tên Đăng Nhập
-                </th>
-                <th>
-                    Họ Tên
-                </th>
-                <th>
-                    Mật Khẩu
-                </th>
-                <th>
-                    Trạng Thái
-                </th>
-                <th>
-                    Thao Tác
-                </th>
-               
+                <td>
+                    @item.MaKH
+                </td>
+                <td>
+                    @item.TenKH
+                </td>
+                <td>
+                    @item.DiaChi
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.SoDienThoai
+                </td>
+                <td>
+                    @item.GioiTinh
+                </td>
+                <td>
+                    @item.MatKhau
+                </td>
+                <td>
+                    @item.MaLKH
+                </td>
+                <td>
+                    <a href="~/Admin/Customer/Update/@item.MaKH"><i class="fa fa-refresh"></i></a>
+                    &nbsp;
+                    @Ajax.ActionLink(" ", "Delete", new { @username = item.MaKH }, new AjaxOptions
+               {
+                   Confirm = "Bạn có muốn xóa bản ghi này?",
+                   OnComplete = "$('#row_" + item.MaKH + "').remove()",
+                   HttpMethod = "Delete"
+               }, new { @class = "glyphicon glyphicon-trash" })
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model)
-            {
-                <tr id="row_@item.CusID">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Password)
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-success btn-active" data-id="@item.CusID">
-                             @(item.Status? "Active":"Blocked")
-                        </a>    
-                    </td>
-                    <td>
-                        <a href="~/Admin/Customer/Update/@item.UserName"><i class="fa fa-refresh"></i></a>
-                        &nbsp;
-                        @Ajax.ActionLink(" ", "Delete", new { @username = item.UserName }, new AjaxOptions
-                   {
-                       Confirm = "Bạn có muốn xóa bản ghi này?",
-                       OnComplete = "$('#row_" + item.UserName + "').remove()",
-                       HttpMethod = "Delete"
-                   }, new { @class = "glyphicon glyphicon-trash" })
-                    </td>
-                    
-                </tr>
-            }
-
-        </table>
-        <i class="btn-danger">
-        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))</i>
-    </div>
+    </table>
+    <i class="btn-danger">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
+    </i>
+</div>
 @section jsFooter{
     <script src="~/Assets/admin/js/active_controller/active.js"></script>
-    }
+}

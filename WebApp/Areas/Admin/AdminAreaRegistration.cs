@@ -14,11 +14,11 @@ namespace WebApp.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute(
-              "Create_default",
-              "Admin/{controller}/{action}/{user}",
-              new { action = "Index", user = UrlParameter.Optional }
-          );
+          //  context.MapRoute(
+          //    "Create_default",
+          //    "Admin/{controller}/{action}/{user}",
+          //    new { action = "Index", user = UrlParameter.Optional }
+          //);
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",

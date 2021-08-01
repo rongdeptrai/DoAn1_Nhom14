@@ -9,21 +9,24 @@
                 var btn = $(this);
                 var id = btn.data('id');
                 $.ajax({
-                    url: "/Admin/Customer/ChangeStatus",
+                    url: "/Admin/Parking/ChangeStatus",
                     data: { id:id },
                     datatype: "json",
                     type:"POST",
                     success: function(response) {
                                 console.log(response);
-                                if (response.status == true) {
-                                    btn.text('Active');
+                        if (response.status == true) {
+                            window.location.reload();
+                                    btn.text('Xuất bãi');
                                     btn.removeClass('btn-danger');
                                     btn.addClass('btn-success');
+                                  
                                 }
                                 else {
-                                    btn.text('Blocked');
+                                    btn.text('Xác nhận vào bãi');
                                     btn.removeClass('btn-success');
                                     btn.addClass('btn-danger');
+                                   
                                 }
                             }
                 });
